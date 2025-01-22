@@ -12,9 +12,18 @@
     "express.js"
   ],
   "author": "Rouvik Maji",
-  "license": "GPL-3.0-only",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.7",
     "mime-types": "^2.1.35"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rouvik/subway.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rouvik/subway/issues"
+  },
+  "homepage": "https://github.com/Rouvik/subway#readme"
 }
