@@ -1,0 +1,20 @@
+{
+  "name": "subway",
+  "version": "1.0.0",
+  "description": "A simple express.js analog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "HTTPS",
+    "Servers",
+    "express.js"
+  ],
+  "author": "Rouvik Maji",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "mime-types": "^2.1.35"
+  }
+}

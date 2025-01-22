@@ -1,0 +1,15 @@
+body {
+    font-family: 'Noto Mono';
+}
+
+h1::before {
+    content: '🔗 ';
+}
+
+h1 {
+    border-bottom: 2px solid black;
+}
+
+#counter {
+    outline: none;
+}
