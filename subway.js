@@ -92,9 +92,10 @@ class Server {
         this._globalCors = () => {};
 
         this.server.on("request", (req, res) => {
+            const decodedUrl = decodeURIComponent(req.url);
             for (const route of this._routes) {
                 let matches = null;
-                if ((matches =  decodeURIComponent(req.url).match(route.path)) != null && (route.method == "*" || route.method == req.method)) {
+                if ((matches = decodedUrl.match(route.path)) != null && (route.method == "*" || route.method == req.method)) {
                     req.uriCaptures = matches;
                     route.callback(req, res);
                     return;
@@ -123,26 +124,28 @@ class Server {
         }
 
         this._routes.push(route);
+        
+        return this;
     }
 
     get(url_pattern, callback)
     {
-        this.addRoute(new Route(url_pattern, callback, 'GET'));
+        return this.addRoute(new Route(url_pattern, callback, 'GET'));
     }
 
     post(url_pattern, callback)
     {
-        this.addRoute(new Route(url_pattern, callback, 'POST'));
+        return this.addRoute(new Route(url_pattern, callback, 'POST'));
     }
 
     put(url_pattern, callback)
     {
-        this.addRoute(new Route(url_pattern, callback, 'PUT'));
+        return this.addRoute(new Route(url_pattern, callback, 'PUT'));
     }
 
     delete(url_pattern, callback)
     {
-        this.addRoute(new Route(url_pattern, callback, 'DELETE'));
+        return this.addRoute(new Route(url_pattern, callback, 'DELETE'));
     }
 
     static generateErrorResponse(code, message) {

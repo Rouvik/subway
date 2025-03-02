@@ -10,9 +10,8 @@ process.env.PORT ||= 3000;          // make sure a port exists
 
 const server = new Server(process.env.PORT, () => console.log("Server live at port: %d", process.env.PORT));
 
-server.addRoute(RouteHandlers.cors('*', 'GET, POST, PUT, DELETE'));
-
-server.addRoute(RouteHandlers.redirect(/^\/$/, '/public/test.html', 'GET'));
+server.addRoute(RouteHandlers.cors('*', 'GET, POST, PUT, DELETE'))
+    .addRoute(RouteHandlers.redirect(/^\/$/, '/public/test.html', 'GET'));
 
 server.addRoute(new Route(/^\/index\/([a-z\\d]*)\/address\/([a-zA-Z0-9\/, -]*)$/, (req, res) => {
     res.write(req.uriCaptures.slice(1).join('\t|\t'));
@@ -24,8 +23,7 @@ server.get(/^\/api\/([\d]*|[a-zA-Z0-9,: ]*)$/, (req, res) => {
         'content-type': mimeType.lookup('.json')
     });
 
-    if(isNaN(+req.uriCaptures[1]))
-    {        
+    if (isNaN(+req.uriCaptures[1])) {
         const dt = new Date(req.uriCaptures[1]);
         if (isNaN(dt.getTime())) {
             res.end(JSON.stringify({
